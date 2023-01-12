@@ -18,4 +18,4 @@
 
 ## プロダクトイメージ（現在作成部部のみ）
 
-https://github.com/TaisukeMiyachi/schooljobs/files/10402104/default.pdf)
+https://github.com/TaisukeMiyachi/schooljobs/files/10402104/default.pdf
