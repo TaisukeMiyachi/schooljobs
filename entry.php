@@ -1,5 +1,5 @@
 <?php
-require("./functions.php");
+include("./functions.php");
 session_start();
 
 if (!empty($_POST)) {
@@ -13,7 +13,7 @@ if (!empty($_POST)) {
 
     /* メールアドレスの重複を検知 */
     if (!isset($error)) {
-        $member = $db->prepare('SELECT COUNT(*) as cnt FROM members WHERE email=?');
+        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM members WHERE email=?');
         $member->execute(
             array(
                 $_POST['email']

@@ -16,5 +16,6 @@
 
   - dbへの接続の理解ができておらず、他からの写経した部分を講義の体裁に合わせたかったが、うまく行かなかった。
 
-## プロダクトイメージ（現在作成部部のみ）
-[プロダクトアイデア.pdf](https://github.com/TaisukeMiyachi/schooljobs/files/10402200/default.pdf)
+## プロダクトイメージ（現在作成部分のみ）
+
+https://github.com/TaisukeMiyachi/schooljobs/files/10402104/default.pdf)

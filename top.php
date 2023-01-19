@@ -9,17 +9,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="title">
+    <div id="title">
         <h1>校務管理システム</h1>
     </div>
     <div class="content">
         <h1>【登録がまだの方】</h1>
         <P>下のボタンをクリックして、登録をお願いします。</p>
-        <!-- <a href="entry.php" class="btn" style="button">登録はこちらから</a> -->
         <input  id="entry" value="登録はこちらから" class="btn">
     </div>
-    <!-- <P>下の</p>
-    <a href="entry.php" class="btn" style="button">登録はこちらから</a> -->
     <div class="content">
         <h1>【登録がお済みの方】</h1>
         <p>登録済みのメールアドレス、パスワードを入力のうえ「ログイン」を押して下さい。</p>

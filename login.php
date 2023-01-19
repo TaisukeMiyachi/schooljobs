@@ -1,23 +1,15 @@
 <?php
+include("./functions.php");
 session_start();
+
 $email = $_POST['email'];
-$dsn = "mysql:host=localhost; dbname=portfolio_db; charset=utf8";
-$username = "root";
-$password = "";
-try {
-    $dbh = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
 
 $sql = "SELECT * FROM members WHERE email = :email";
-$stmt = $dbh->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->bindValue(':email', $email);
 $stmt->execute();
 $member = $stmt->fetch();
 
-// var_dump($member);
-// exit();
 
 //指定したハッシュがパスワードにマッチしているかチェック
 if (password_verify($_POST['password'], $member['password'])) {
@@ -32,7 +24,18 @@ if (password_verify($_POST['password'], $member['password'])) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <h1>
     <?php echo $msg; ?>
 </h1>
-<?php echo $link; ?>
+<?php echo $link; ?>    
+</body>
+</html>

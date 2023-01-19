@@ -1,21 +1,21 @@
 <?php 
-
+session_start();
 
 ///送られたデータが存在しているか確認　⇨ 不備があればエラーを出す。
-if(!isset($_POST["teacher_name"]) || $_POST["teacher_name"] === '' || 
-   !isset($_POST["teacher_number"]) || $_POST["teacher_number"] === '' ||
+if(!isset($_SESSION["name"]) || ($_SESSION["name"]) === '' || 
    !isset($_POST["first"]) || $_POST["first"] === '' ||
    !isset($_POST["second"]) || $_POST["second"] === '' ||
    !isset($_POST["third"]) || $_POST["third"] === '' 
     ){
         exit('ParamError');
-    };
-
+  };
+    $_SESSION["first"] = $_POST["first"];
+    $_SESSION["second"] = $_POST["second"];
+    $_SESSION["third"] = $_POST["third"];
 ///データ取得////////////////////////////////////////////////////////////
-///テキスト/////////////
 if(!empty($_POST)){
-    $name = $_POST["teacher_name"];
-    $number = $_POST["teacher_number"];
+    $name = $_SESSION["name"];
+    $number = $_SESSION["id"];
     $first = $_POST["first"];
     $second = $_POST["second"];
     $third = $_POST["third"];
@@ -73,35 +73,19 @@ if($third == $array_jobs[0]){
   $nthird = "5";
 }
 
-
 ///db接続/////////////////////////////////////////////////////////////
-$dbn ='mysql:dbname=portfolio_db;charset=utf8mb4;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
-
-try {
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-};
+include("functions.php");
 
 ///SQL作成＆実行
-$sql = 'INSERT INTO choice2023(id, name, number, first, second, third, created_at) VALUES (NULL, :name, :number, :first, :second, :third, now())';
-
+$sql = "UPDATE members SET first=:first,second=:second,third=:third WHERE name='$name'";
 $stmt = $pdo->prepare($sql);
-// var_dump($grade);
-// exit();
 
 ///バインド変数を設定
-$stmt->bindValue(':name', $name, PDO::PARAM_STR);
-$stmt->bindValue(':number', $number, PDO::PARAM_INT);
 $stmt->bindValue(':first', $nfirst, PDO::PARAM_INT);
 $stmt->bindValue(':second', $nsecond, PDO::PARAM_INT);
 $stmt->bindValue(':third', $nthird, PDO::PARAM_INT);
 
-
-///SQL実行　⇨ 失敗するとエラーを出す
+///SQL実行 ⇨ 失敗するとエラーを出す
 try {
   $status = $stmt->execute();
 } catch (PDOException $e) {

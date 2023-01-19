@@ -1,9 +1,5 @@
 <?php
 session_start();
-
-// var_dump($_SESSION);
-// exit();
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +15,6 @@ session_start();
             display: flex;
             justify-content: center;
             align-items: center;
-            /* flex-direction : column; */
         }
         #input_area{
             display: flex;
@@ -39,7 +34,6 @@ session_start();
         #class,
         #student_number,
         #student_name{
-            /* width:300px; */
             display: flex;
             justify-content: center;
             align-items: center; 
@@ -98,24 +92,15 @@ session_start();
                         <div id="student_name">
                             <h2> 名前 : </h2>
                             <div id = "parsonal_name">
-                                <!-- <input type="text" name="teacher_name"> -->
                                 <?php echo $_SESSION["name"] ?>
                             </div>
                         </div>
-                        <!-- <div id="student_number">
-                            <h2> 職員番号 : </h2>
-                            <div><input type="number" name="teacher_number"></div>
-                        </div> -->
-                        
                     </div>
                 </div>
             </div>
-        </div>
-       
-    
-       
+        </div>   
         <div id="transform">
-            <h3>来年度希望する分掌をしたから選び３つ記入ください。</h3>
+            <h3>来年度希望する分掌を下から選び３つ記入して下さい。</h3>
             <div>
                 <button value="0">時間割</button>
                 <button value="1">教務事務</button>
@@ -138,7 +123,8 @@ session_start();
              <div><input type="text" name="third"></div>
         </div>    
         <div id="button">
-            <button type="submit" class="btn">次へ</button>    
+            <button type="submit" class="btn">登録</button>   
+            <a href="mypage.php">mypageへ</a> 
         </div>
     </form> 
     <script src="script.js"></script>

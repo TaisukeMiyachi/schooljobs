@@ -1,9 +1,6 @@
 <?php
-require("./functions.php");
+include("./functions.php");
 session_start();
-
-// var_dump($_SESSION);
-// exit();
 
 /* 会員登録の手続き以外のアクセスを飛ばす */
 if (!isset($_SESSION['join'])) {
@@ -16,7 +13,7 @@ if (!empty($_POST['check'])) {
     $hash = password_hash($_SESSION['join']['password'], PASSWORD_BCRYPT);
 
     // 入力情報をデータベースに登録
-    $statement = $db->prepare("INSERT INTO members SET name=?, email=?, password=?");
+    $statement = $pdo->prepare("INSERT INTO members SET name=?, email=?, password=?");
     $statement->execute(
         array(
             $_SESSION['join']['name'],
@@ -24,7 +21,6 @@ if (!empty($_POST['check'])) {
             $hash
         )
     );
-
 
     unset($_SESSION['join']); // セッションを破棄
     header('Location:thank.php'); // thank.phpへ移動
