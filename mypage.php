@@ -63,7 +63,7 @@ include("functions.php");
     </div>
     <div id="hope">
         <u><h2>校務分掌希望</h2></u>
-        <a href="input.php">選択し直す</a>
+        <a href="input_update.php">選択し直す</a>
     </div>
     <div id="select">
         <h3> 第1希望: <?php echo $_SESSION["first"] ?></h3>

@@ -2,7 +2,7 @@
 ///db接続/////////////////////////////////////////////////////////////
 include("functions.php");
 session_start();
-// var_dump($_SESSION["name"]);
+// var_dump($_POST);
 // exit();
 
 ///送られたデータが存在しているか確認　⇨ 不備があればエラーを出す。
@@ -26,7 +26,7 @@ if(!empty($_POST)){
     $third = $_POST["third"];
 };
 
-// var_dump($name);
+// var_dump($first);
 // exit();
 $array_jobs=[
   "時間割",
@@ -81,10 +81,12 @@ if($third == $array_jobs[0]){
 }
 
 
+// var_dump($number);
+// exit();
 
 ///SQL作成＆実行
 // $sql = "INSERT choice2023 SET first=:first,second=:second,third=:third WHERE name='$name'";
-$sql = "INSERT INTO `choice2023`(id, name, number, first, second, third, created_at) VALUES (NULL,:name,NULL,:first,:second,:third,now())";
+$sql = "UPDATE choice2023 SET first=:first, second=:second, third=:third, created_at=now() WHERE name=:name";
 $stmt = $pdo->prepare($sql);
 
 ///バインド変数を設定

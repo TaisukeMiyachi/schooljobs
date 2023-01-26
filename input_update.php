@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// var_dump($_SESSION["name"]);
+// var_dump($_SESSION["first"]);
 // exit();
 ?>
 
@@ -86,8 +86,8 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    <h1>校務分掌希望調査</h1>
-    <form action="create.php" method="POST">
+    <h1>校務分掌希望調査（再選択）</h1>
+    <form action="update.php" method="POST">
         <div id="area_all">
             <div id="area_left">
                 <div id="input_area">
@@ -96,6 +96,7 @@ session_start();
                             <h2> 名前 : </h2>
                             <div id = "parsonal_name">
                                 <?php echo $_SESSION["name"] ?>
+                                
                             </div>
                         </div>
                     </div>
@@ -104,6 +105,7 @@ session_start();
         </div>   
         <div id="transform">
             <h3>来年度希望する分掌を下から選び３つ記入して下さい。</h3>
+            <h3>()内は現在の希望</h3>
             <div>
                 <button value="0">時間割</button>
                 <button value="1">教務事務</button>
@@ -115,18 +117,18 @@ session_start();
         </div>
         <div id="first">
             <h2> 第1希望 : </h2>
-             <div><input type="text" name="first"></div>
+             <h3><input type="text" name="first">(<?php echo $_SESSION["first"] ?>)</h3>
         </div> 
          <div id="second">
             <h2> 第2希望 : </h2>
-             <div><input type="text" name="second"></div>
+             <h3><input type="text" name="second">(<?php echo $_SESSION["second"] ?>)</h3>
         </div> 
          <div id="third">
             <h2> 第3希望 : </h2>
-             <div><input type="text" name="third"></div>
+             <h3><input type="text" name="third">(<?php echo $_SESSION["third"] ?>)</h3>
         </div>    
         <div id="button">
-            <button type="submit" class="btn">登録</button>   
+            <button type="submit" class="btn">再登録</button>   
             <a href="mypage.php">mypageへ</a> 
         </div>
     </form> 

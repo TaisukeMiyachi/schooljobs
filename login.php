@@ -22,6 +22,8 @@ if (password_verify($_POST['password'], $member['password'])) {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
     $link = '<a href="top.php">戻る</a>';
 }
+// var_dump($_SESSION["name"]);
+// exit();
 ?>
 
 <!DOCTYPE html>
